@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boss_transform.wav-14b590b7034c30530f6d907ed5e4cd28.sample"
+
+[deps]
+
+source_file="res://assets/audio/enemy/boss_transform.wav"
+dest_files=[ "res://.import/boss_transform.wav-14b590b7034c30530f6d907ed5e4cd28.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

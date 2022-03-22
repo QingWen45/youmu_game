@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player/mochi/mochi.gd" type="Script" id=1]
+[ext_resource path="res://player/mochi/anchor.gd" type="Script" id=2]
+[ext_resource path="res://player/mochi/link.gd" type="Script" id=3]
+[ext_resource path="res://player/mochi/lin.png" type="Texture" id=4]
+
+[node name="mochi" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="anchor" type="Node2D" parent="."]
+script = ExtResource( 2 )
+anchor = true
+
+[node name="link" type="Node2D" parent="anchor"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="anchor"]
+texture = ExtResource( 4 )
+hframes = 6
+
+[node name="loop" type="Node2D" parent="anchor"]
+show_behind_parent = true
+position = Vector2( 0, 8 )
+script = ExtResource( 2 )
+
+[node name="link" type="Node2D" parent="anchor/loop"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="anchor/loop"]
+texture = ExtResource( 4 )
+hframes = 6
+frame = 1
+
+[node name="loop" type="Node2D" parent="anchor/loop"]
+show_behind_parent = true
+position = Vector2( 0, 8 )
+script = ExtResource( 2 )
+
+[node name="link" type="Node2D" parent="anchor/loop/loop"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="anchor/loop/loop"]
+texture = ExtResource( 4 )
+hframes = 6
+frame = 2
+
+[node name="loop" type="Node2D" parent="anchor/loop/loop"]
+show_behind_parent = true
+position = Vector2( 0, 4 )
+script = ExtResource( 2 )
+
+[node name="link" type="Node2D" parent="anchor/loop/loop/loop"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="anchor/loop/loop/loop"]
+texture = ExtResource( 4 )
+hframes = 6
+frame = 3
+
+[node name="loop" type="Node2D" parent="anchor/loop/loop/loop"]
+show_behind_parent = true
+position = Vector2( 0, 4 )
+script = ExtResource( 2 )
+
+[node name="link" type="Node2D" parent="anchor/loop/loop/loop/loop"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="anchor/loop/loop/loop/loop"]
+texture = ExtResource( 4 )
+hframes = 6
+frame = 4
+
+[node name="loop" type="Node2D" parent="anchor/loop/loop/loop/loop"]
+show_behind_parent = true
+position = Vector2( 0, 2 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="anchor/loop/loop/loop/loop/loop"]
+texture = ExtResource( 4 )
+hframes = 6
+frame = 5
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
