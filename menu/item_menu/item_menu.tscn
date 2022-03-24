@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menu/item_menu/sep_line.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/fonts/zpix8.tres" type="DynamicFont" id=2]
+[ext_resource path="res://menu/item_menu/item_menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/ui/se_changeitem.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/ui/se_cancel00.wav" type="AudioStream" id=5]
+
+[node name="item_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="margin" type="MarginContainer" parent="."]
+margin_left = 80.0
+margin_top = 40.0
+margin_right = 400.0
+margin_bottom = 220.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="Panel" parent="margin"]
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="margin2" type="MarginContainer" parent="margin/panel"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 315.0
+margin_bottom = 175.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="split" type="HSplitContainer" parent="margin/panel/margin2"]
+margin_right = 310.0
+margin_bottom = 170.0
+
+[node name="items" type="GridContainer" parent="margin/panel/margin2/split"]
+margin_bottom = 170.0
+columns = 6
+
+[node name="description" type="VBoxContainer" parent="margin/panel/margin2/split"]
+margin_left = 12.0
+margin_right = 310.0
+margin_bottom = 170.0
+
+[node name="HSeparator" type="HSeparator" parent="margin/panel/margin2/split/description"]
+margin_right = 298.0
+margin_bottom = 4.0
+custom_styles/separator = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="margin/panel/margin2/split/description"]
+margin_top = 8.0
+margin_right = 298.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 2 )
+text = "name"
+
+[node name="HSeparator2" type="HSeparator" parent="margin/panel/margin2/split/description"]
+margin_top = 21.0
+margin_right = 298.0
+margin_bottom = 25.0
+custom_styles/separator = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="des" type="Label" parent="margin/panel/margin2/split/description"]
+margin_top = 29.0
+margin_right = 298.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 2 )
+text = "write your descriptions here"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

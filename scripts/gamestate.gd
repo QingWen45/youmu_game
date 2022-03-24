@@ -21,6 +21,8 @@ func set_state(k, v, save = false):
 		save_gamestate()
 	return true
 
+# v: health_prv - damage, s: health_prv
+# we use these 2 to make the health bar effect
 func player_hurt(v, s):
 	if v < 0:
 		v = 0
@@ -70,6 +72,7 @@ func state_initialize():
 		"bullet_live_time": 0.5,
 		"health": 100,
 		"max_health": 100,
+		"items": [],
 		"events": debug_events
 	}
 

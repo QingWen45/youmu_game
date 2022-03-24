@@ -9,14 +9,17 @@ func _ready():
 
 func _set_player():
 	var player = Game.player
+	var mochi = Game.mochi
 	# print(Gamestate.state.current_pos)
 	if not Gamestate.state.current_pos.empty():
 		var start_pos = find_node(Gamestate.state.current_pos)
 		player.global_position = start_pos.global_position
+		mochi.global_position = start_pos.global_position + Vector2(40, 40)
 		player.dir_next = Gamestate.state.current_dir
 	else:
 		var start_pos = find_node("initial_position")
 		player.global_position = start_pos.global_position
+		mochi.global_position = start_pos.global_position + Vector2(40, 40)
 		player.dir_next = Gamestate.state.current_dir
 
 func _set_camera():

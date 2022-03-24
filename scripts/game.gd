@@ -6,6 +6,7 @@ var mochi = null
 var cur_boss = null
 var camera = null
 var main = null
+var hud = null
 var item_menu = null
 # true to show debug messages
 var _debug = true
@@ -44,3 +45,6 @@ func camera_shake(strength: float, duration: float = 1.0):
 	if not camera:
 		return
 	camera.shake(strength, duration)
+
+func show_side_msg(msg: String = ""):
+	hud.show_text(msg)

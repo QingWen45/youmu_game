@@ -3,17 +3,17 @@ extends KinematicBody2D
 var _debug = false
 
 # Constants
-export (int) var GRAVITY = 800
+export (int) var GRAVITY =1200
 export (int) var SNAP_LEN = 30
 
-export (float) var JUMP_FORCE = -400
+export (float) var JUMP_FORCE = -500
 export (float) var DASH_FORCE = 1200
 export (float) var DASH_DURATION = 0.15
 export (float) var DASH_DECAY = 0.2
 export (float) var DASH_GAP = 1
 export (float) var MAX_SPEED = 180
-export (float) var MAX_FALL_SPEED = 400
-export (float) var AIR_ACCEL = 0.3
+export (float) var MAX_FALL_SPEED = 700
+export (float) var AIR_ACCEL = 0.2
 export (float) var JUMP_MARGIN = 0.2
 export (float) var JUMP_AGAIN_TIME = 0.2
 export (float) var DAMAGE = 10

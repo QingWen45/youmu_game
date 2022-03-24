@@ -1,0 +1,160 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://hud/hud_layer/health_rect.png" type="Texture" id=1]
+[ext_resource path="res://hud/hud_layer/health_bar.png" type="Texture" id=2]
+[ext_resource path="res://hud/hud_layer/health_bar_coat.png" type="Texture" id=3]
+[ext_resource path="res://hud/hud_layer/boss_bar_coat.png" type="Texture" id=4]
+[ext_resource path="res://hud/hud_layer/boss_bar.png" type="Texture" id=5]
+[ext_resource path="res://hud/hud_layer/boss_rect.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/zpix8.tres" type="DynamicFont" id=7]
+[ext_resource path="res://hud/hud_layer/v_sep_line.tres" type="StyleBox" id=8]
+[ext_resource path="res://hud/hud_layer/damage_bar.png" type="Texture" id=9]
+[ext_resource path="res://hud/hud_layer/hud_layer.gd" type="Script" id=10]
+
+[node name="hud_layer" type="CanvasLayer"]
+script = ExtResource( 10 )
+
+[node name="hud" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="margin" type="MarginContainer" parent="hud"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 448.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bars" type="HBoxContainer" parent="hud/margin"]
+margin_right = 432.0
+margin_bottom = 240.0
+custom_constants/separation = 41
+
+[node name="left_hud" type="VBoxContainer" parent="hud/margin/bars"]
+margin_right = 167.0
+margin_bottom = 240.0
+
+[node name="health_cover" type="TextureRect" parent="hud/margin/bars/left_hud"]
+margin_right = 167.0
+margin_bottom = 13.0
+texture = ExtResource( 3 )
+
+[node name="damage_bar" type="TextureProgress" parent="hud/margin/bars/left_hud/health_cover"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_bar" type="TextureProgress" parent="hud/margin/bars/left_hud/health_cover"]
+show_behind_parent = true
+margin_right = 167.0
+margin_bottom = 40.0
+value = 50.0
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="hud/margin/bars/left_hud"]
+margin_top = 17.0
+margin_right = 167.0
+margin_bottom = 26.0
+
+[node name="VSeparator" type="VSeparator" parent="hud/margin/bars/left_hud/hbox"]
+margin_right = 4.0
+margin_bottom = 9.0
+custom_styles/separator = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="hud/margin/bars/left_hud/hbox"]
+margin_left = 8.0
+margin_right = 63.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 7 )
+text = "You are good"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="debug" type="Label" parent="hud/margin/bars/left_hud"]
+margin_top = 30.0
+margin_right = 167.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 7 )
+text = "Debug:"
+
+[node name="right_hud" type="VBoxContainer" parent="hud/margin/bars"]
+margin_left = 208.0
+margin_right = 432.0
+margin_bottom = 240.0
+
+[node name="boss_cover" type="TextureRect" parent="hud/margin/bars/right_hud"]
+margin_right = 224.0
+margin_bottom = 13.0
+texture = ExtResource( 4 )
+
+[node name="boss_bar" type="TextureProgress" parent="hud/margin/bars/right_hud/boss_cover"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+value = 50.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="hud/margin/bars/right_hud"]
+margin_top = 17.0
+margin_right = 224.0
+margin_bottom = 26.0
+alignment = 2
+
+[node name="Label" type="Label" parent="hud/margin/bars/right_hud/hbox"]
+margin_left = 161.0
+margin_right = 216.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 7 )
+text = "You are good"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="hud/margin/bars/right_hud/hbox"]
+margin_left = 220.0
+margin_right = 224.0
+margin_bottom = 9.0
+custom_styles/separator = ExtResource( 8 )
+
+[node name="side_msg" type="HBoxContainer" parent="hud/margin"]
+margin_right = 432.0
+margin_bottom = 240.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="hud/margin/side_msg"]
+margin_left = 398.0
+margin_right = 432.0
+margin_bottom = 240.0
+alignment = 2
+
+[node name="Tween" type="Tween" parent="hud/margin/side_msg/vbox"]
+
+[node name="Label" type="Label" parent="hud/margin/side_msg/vbox"]
+margin_top = 231.0
+margin_right = 34.0
+margin_bottom = 240.0
+custom_fonts/font = ExtResource( 7 )
+text = "message"
+
+[node name="Timer" type="Timer" parent="hud/margin/side_msg/vbox"]

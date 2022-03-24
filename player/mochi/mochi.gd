@@ -3,6 +3,8 @@ extends VerletChain
 var dir_cur = 1 setget _set_dir
 var is_center : = false setget _set_center
 
+export (float) var SWIM_SPEED = 20
+
 onready var tween = $Tween
 
 var youmu
@@ -36,7 +38,7 @@ func setup():
 	youmu = Game.player
 	set_physics_process(true)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	dir_to_Y = youmu.global_position - self.global_position
 	distance_to_Y = dir_to_Y.length()
 
@@ -49,17 +51,22 @@ func _physics_process(delta):
 
 func swim():
 	is_swimming = true
-	var x = randi() % 100 - 50
-	var y = randi() % 100 - 50
+	var x = randi() % 200 - 100
+	var y = randi() % 150 - 75
 
-	tween.interpolate_property(self, "global_position",
-		global_position, global_position + Vector2(x,y), 3,
+	var time = Vector2(x,y).length() / SWIM_SPEED
+
+	tween.interpolate_property(self, "global_position:x",
+		global_position.x, global_position.x + x, time,
 		Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.interpolate_property(self, "global_position:y",
+		global_position.y, global_position.y + y, time,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 func return_to_Y():
 	var x = randi() % 100 - 50
-	var y = randi() % 100 - 50
+	var y = randi() % 100 - 75
 	tween.interpolate_property(self, "global_position",
 		global_position, youmu.global_position + Vector2(x,y), 2,
 		Tween.TRANS_SINE, Tween.EASE_OUT)

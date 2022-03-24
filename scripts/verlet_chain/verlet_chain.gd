@@ -4,7 +4,9 @@ class_name VerletChain
 export (float) var gravity = 1.0
 export (float) var resistance = 0.80
 export (float) var friction = 0.90
-export (float) var chain_link_length = 6.0
+export (float) var CHAIN_LENGTH = 6.8
+
+var chain_link_length = CHAIN_LENGTH
 
 var loops = []
 var links = []
@@ -83,7 +85,6 @@ func _constrain_links( delta ):
 		if percentage > 1: percentage = 1
 		vector *= percentage
 		link.child.pos_cur += vector * delta
-	pass
 
 func _render_frame():
 	for loop in loops:
