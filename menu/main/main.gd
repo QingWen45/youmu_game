@@ -102,9 +102,32 @@ func load_save():
 func _on_save_timer_timeout():
 	load_save()
 
+# call with empty String to stop the bgm
+var cur_music = ""
+func bgm_change( music:String = ""):
+	if music.empty():
+		cur_music = music
+		tween.interpolate_property(bgm_player, "volume_db", 0, -60, 1.0, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		tween.start()
+		yield(tween, "tween_all_completed")
+		bgm_player.stop()
+	else:
+		if cur_music == music: return
+		if not cur_music.empty():
+			tween.interpolate_property(bgm_player, "volume_db", 0, -60, 0.3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+			tween.start()
+			yield(tween, "tween_all_completed")
+		cur_music = music
+		
+		bgm_player.stop()
 
-func bgm_change(): # ( music:String = ""):
-	pass
+		var music_path = "res://assets/bgm/{name}.mp3".format({"name": music})
+		bgm_player.stream = load(music_path)
+		yield(get_tree().create_timer(0.2), "timeout")
+		
+		Game.hud.show_text("BGM: " + music)
+		bgm_player.volume_db = 0
+		bgm_player.play()
 
 
 func _input(event):

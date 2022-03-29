@@ -68,6 +68,7 @@ func explode():
 	sprite.hide()
 	explosion_sp.show()
 	anim.play("explode")
+	$explode.play()
 
 func _on_anim_animation_finished(name: String):
 	if name == "explode":

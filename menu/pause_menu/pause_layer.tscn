@@ -71,9 +71,11 @@ margin_bottom = 240.0
 text = "quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="pause_menu"]
+bus = "sfx"
 
 [node name="pause" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+bus = "sfx"
 
 [node name="item_menu" parent="." instance=ExtResource( 4 )]
 visible = false

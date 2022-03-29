@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/chara/youmu/Youmu-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/battle_sys/hurtbox.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://player/states/attack2.gd" type="Script" id=18]
 [ext_resource path="res://player/states/attack3.gd" type="Script" id=19]
 [ext_resource path="res://assets/audio/player/hurt_004.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/audio/biu~.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/audio/player/player_jump.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/audio/player/se_graze.wav" type="AudioStream" id=23]
 [ext_resource path="res://assets/audio/player/feet_28.wav" type="AudioStream" id=24]
@@ -482,18 +483,26 @@ script = ExtResource( 19 )
 
 [node name="step" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "sfx"
 
 [node name="hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
+bus = "sfx"
 
 [node name="jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 22 )
+bus = "sfx"
 
 [node name="graze" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 23 )
+bus = "sfx"
 
 [node name="dash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
+bus = "sfx"
+
+[node name="biu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
 
 [connection signal="area_entered" from="rotator/hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="rotator/hitbox2" to="." method="_on_hitbox2_area_entered"]

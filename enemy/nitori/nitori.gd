@@ -35,6 +35,8 @@ onready var timer = $Timer
 onready var ray = $RayCast2D
 onready var sprite = $rotator/Sprite
 
+onready var takeoff_sound = $take_off
+
 var anim_cur = ""
 var anim_next = "idle"
 var dir_cur = 1
@@ -57,7 +59,6 @@ func _ready():
 		deactivate()
 	is_stuned = false
 	Game.cur_boss = self
-	Game.player.connect("player_dead", self, "_on_player_dead")
 
 func _exit_tree():
 	fsm.free()
@@ -80,6 +81,7 @@ func _physics_process(delta):
 
 func activate():
 	self.show()
+	Game.player.connect("player_dead", self, "_on_player_dead")
 	set_physics_process(true)
 
 func deactivate():
@@ -92,8 +94,9 @@ func get_player_direction():
 	return sign(Game.player.global_position.x - global_position.x)
 
 func create_danmaku(type):
+	$charge.play()
 	match type:
-		# Trauma
+		# wave
 		# end_pos
 		#    |
 		#    |
@@ -107,7 +110,7 @@ func create_danmaku(type):
 			var v_offset = 0
 			var bullet
 			var dir
-			for _i in range(40):
+			for _i in range(30):
 				for _j in range(3):
 					# left sine
 					bullet = bullet_path.instance()
@@ -137,9 +140,9 @@ func create_danmaku(type):
 					get_parent().add_child(bullet)
 					bullet.global_position = start_pos_R
 					bullet.global_position.y -= v_offset
-
 					v_offset += 120
 				if _i % 5 == 0:
+					$dan.play()
 					timer.start(0.6)
 				else:
 					timer.start(0.2)
@@ -162,26 +165,33 @@ func create_danmaku(type):
 					get_parent().add_child(bullet)
 					bullet.global_position = start_pos
 					bullet.global_position.x += h_offset
+					
 					timer.start(0.1)
 					yield(timer, "timeout")
+					if _j % 4 == 0:
+						$dan.play()
 				h_offset = 0
+				
 			emit_signal("danmanku_over")
 
-func throw(dir: Vector2, type: int):
+func throw(dir: Vector2, type: int, c_num = 3):
+	$throw.play()
 	var projectile
 	match type:
 		0:
 			projectile = projectile_path.instance()
 			projectile.is_hittable = true
+			projectile.initialize(dir)
 		1:
 			projectile = BB_path.instance()
+			projectile.initialize(dir, c_num)
 	
-	projectile.initialize(dir)
 	get_parent().add_child(projectile)
 	projectile.global_position = project_pos.global_position
 	projectile.set_physics_process(true)
 
 func cannon_fire(spread = 0):
+	$fire.play()
 	var missile = missile_path.instance()
 	var smoke = smoke_path.instance()
 
@@ -198,17 +208,20 @@ func cannon_fire(spread = 0):
 
 func hurt(area, damage):
 	if area.name != "player":
+		$hurt.play()
 		health -= damage
 		Gamestate.boss_health_change()
 		stop_all_tween()
 		fsm.state_next = fsm.states.hurt
 	if not is_stuned:
 		return
-
+	$hurt.play()
 	health -= damage
 	Gamestate.boss_health_change()
 	if health <= 0:
 		emit_signal("boss_defeated")
+		$down.play()
+		Game.main.bgm_change("")
 		fsm.state_next = fsm.states.dead
 	else:
 		anim_fx.play("hurt")

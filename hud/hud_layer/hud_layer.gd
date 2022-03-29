@@ -1,18 +1,18 @@
-extends CanvasLayer
+extends Control
 
-onready var health_bar = $hud/margin/bars/left_hud/health_cover/health_bar
-onready var damage_bar = $hud/margin/bars/left_hud/health_cover/damage_bar
-onready var msg_lb = $hud/margin/bars/left_hud/hbox/Label
+onready var health_bar = $margin/bars/left_hud/health_cover/health_bar
+onready var damage_bar = $margin/bars/left_hud/health_cover/damage_bar
+onready var msg_lb = $margin/bars/left_hud/hbox/Label
 
-onready var boss_bar = $hud/margin/bars/right_hud/boss_cover/boss_bar
-onready var boss_hud = $hud/margin/bars/right_hud
-onready var boss_lb = $hud/margin/bars/right_hud/hbox/Label
+onready var boss_bar = $margin/bars/right_hud/boss_cover/boss_bar
+onready var boss_hud = $margin/bars/right_hud
+onready var boss_lb = $margin/bars/right_hud/hbox/Label
 
-onready var debug_lb = $hud/margin/bars/left_hud/debug
+onready var debug_lb = $margin/bars/left_hud/debug
 
-onready var side_msg_lb = $hud/margin/side_msg/vbox/Label
-onready var side_msg_tween = $hud/margin/side_msg/vbox/Tween
-onready var side_msg_timer = $hud/margin/side_msg/vbox/Timer
+onready var side_msg_lb = $margin/side_msg/vbox/Label
+onready var side_msg_tween = $margin/side_msg/vbox/Tween
+onready var side_msg_timer = $margin/side_msg/vbox/Timer
 
 onready var tween = $Tween
 onready var tween2 = $Tween2
@@ -46,13 +46,21 @@ func _process(delta):
 			
 
 func update_debug():
+	var other = ""
+	if Gamestate.state.health > 60:
+		other = "test version"
+	elif Gamestate.state.health > 30:
+		other = "health low"
+	else:
+		other = "quite danger"
 	var msg = """
 	Debug message:
 health: {h}
 fps: {fps}
-test version""".format({"h": Gamestate.state.health,
+{other}""".format({"h": Gamestate.state.health,
 "hb": health_bar.value,
-"fps": Engine.get_frames_per_second()})
+"fps": Engine.get_frames_per_second(),
+"other": other})
 	debug_lb.text = msg
 
 func initialize():
@@ -65,10 +73,12 @@ func initialize():
 
 # show text at side msg area
 func show_text(msg: String = ""):
+	side_msg_lb.percent_visible = 0.0
 	side_msg_lb.text = msg
 	side_msg_tween.interpolate_property(side_msg_lb, "percent_visible", 0.0, 1.0, 0.5,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	side_msg_tween.start()
+	
 	side_msg_timer.start(5.0)
 	yield(side_msg_timer, "timeout")
 	side_msg_tween.interpolate_property(side_msg_lb, "percent_visible", 1.0, 0.0, 0.5,

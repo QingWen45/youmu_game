@@ -96,6 +96,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "Pre-Build"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="start_menu"]
+bus = "sfx"
 
 [node name="check" parent="." instance=ExtResource( 4 )]
 visible = false

@@ -6,6 +6,8 @@ var anim_played : bool
 
 func initialize():
 	obj.emit_signal("player_dead")
+	if Game.main:
+		Game.main.bgm_change("")
 	Engine.time_scale = 0.8
 	death_timer = 1.0
 	anim_played = false

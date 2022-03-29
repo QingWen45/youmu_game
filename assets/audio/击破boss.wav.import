@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/CCA_003.wav-92ce48c19313d5359fe32522bc5f8172.sample"
+path="res://.import/击破boss.wav-357aaa438eefec80c1d498641c1d8fdf.sample"
 
 [deps]
 
-source_file="res://assets/audio/nitori/CCA_003.wav"
-dest_files=[ "res://.import/CCA_003.wav-92ce48c19313d5359fe32522bc5f8172.sample" ]
+source_file="res://assets/audio/击破boss.wav"
+dest_files=[ "res://.import/击破boss.wav-357aaa438eefec80c1d498641c1d8fdf.sample" ]
 
 [params]
 

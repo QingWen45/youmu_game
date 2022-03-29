@@ -7,6 +7,7 @@ func initialize():
 	obj.anim_fan.play("run")
 	obj.fan.show()
 	obj.anim_float.play("float")
+	obj.takeoff_sound.play()
 	var target_pos = obj.get_parent().get_node("boss_pos").global_position.y
 	tween.interpolate_property(obj, "global_position:y", obj.global_position.y, target_pos,
 		 1.0, Tween.TRANS_CUBIC, Tween.EASE_OUT)

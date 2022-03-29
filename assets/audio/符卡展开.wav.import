@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/hurt_002.wav-3e3fc7ab73fc7f5abafc5050eb900f64.sample"
+path="res://.import/符卡展开.wav-34ffc72bf764e67f77a8a95d4b962868.sample"
 
 [deps]
 
-source_file="res://assets/audio/nitori/hurt_002.wav"
-dest_files=[ "res://.import/hurt_002.wav-3e3fc7ab73fc7f5abafc5050eb900f64.sample" ]
+source_file="res://assets/audio/符卡展开.wav"
+dest_files=[ "res://.import/符卡展开.wav-34ffc72bf764e67f77a8a95d4b962868.sample" ]
 
 [params]
 

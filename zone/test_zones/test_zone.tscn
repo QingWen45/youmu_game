@@ -81,16 +81,18 @@ tile_data = PoolIntArray( -720899, 1, 0, -720898, 1, 0, -720897, 1, 0, -786432, 
 [node name="mochi" parent="." instance=ExtResource( 2 )]
 position = Vector2( -656, -64 )
 
+[node name="nitori" parent="." instance=ExtResource( 5 )]
+position = Vector2( 448, -288 )
+
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 208, -80 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 current = true
+process_mode = 0
 smoothing_enabled = true
+smoothing_speed = 10.0
 script = ExtResource( 8 )
-
-[node name="nitori" parent="." instance=ExtResource( 5 )]
-position = Vector2( 448, -288 )
 
 [node name="camera_limit_L" type="Position2D" parent="."]
 position = Vector2( -768, -336 )
@@ -101,7 +103,7 @@ position = Vector2( 576, 32 )
 scale = Vector2( 5, 5 )
 
 [node name="initial_position" type="Position2D" parent="."]
-position = Vector2( -128, -32 )
+position = Vector2( -304, -32 )
 
 [node name="end_position" type="Position2D" parent="."]
 position = Vector2( 666, -32 )

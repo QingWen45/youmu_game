@@ -45,16 +45,17 @@ func _on_boss_event_body_entered(_body):
 	timer.start(1)
 	yield(timer, "timeout")
 
-	tween.interpolate_property(nitori, "global_position", nitori.global_position, boss_pos.global_position, 1.0, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.interpolate_property(nitori, "global_position", nitori.global_position, boss_pos.global_position, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	tween.start()
 
 	Gamestate.set_boss()
 	Game.camera.limit_left = boss_limit_L.position.x
 	Game.camera.limit_top = boss_limit_L.position.y
 
-	timer.start(1)
+	timer.start(1.5)
 	yield(timer, "timeout")
 
 	nitori.activate()
+	Game.main.bgm_change("芥川龍之介の河童 ～ Candid Friend")
 	Game.player.fsm.state_next = Game.player.fsm.states.idle
 

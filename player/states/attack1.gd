@@ -2,7 +2,7 @@ extends FSM_state
 
 # spicify whether it's a charge atk or a normal one
 const CHARGE_JUDGE_FACTOR = 0.1
-var charge_judge = 0
+# var charge_judge = 0
 var is_first_attack
 # spicify whether to enter attack phase 2
 var attack_timer = 0
@@ -13,18 +13,18 @@ func initialize():
 	is_first_attack = true
 	first_attack = true
 	attack_timer = 0
-	charge_judge = CHARGE_JUDGE_FACTOR
+	# charge_judge = CHARGE_JUDGE_FACTOR
 	obj.anim_next = "attack1"
 
 func run(delta):
-	if charge_judge > 0:
-		charge_judge -= delta
-	else:
-		is_first_attack = false
+	# if charge_judge > 0:
+		# charge_judge -= delta
+	# else:
+		# is_first_attack = false
 
-	if is_first_attack and charge_judge <=0:
-		if Input.is_action_pressed("attack"):
-			fsm.state_next = fsm.states.charge
+	# if is_first_attack and charge_judge <=0:
+		# if Input.is_action_pressed("attack"):
+			# fsm.state_next = fsm.states.charge
 
 	obj.velo.x = 0
 	obj.velo.y = 0

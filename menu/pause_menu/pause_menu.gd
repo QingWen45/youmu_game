@@ -31,6 +31,7 @@ func on_selected(selection_no):
 			Game.item_menu.load_item()
 			Game.item_menu.item_effect()
 
+			Game.main.bgm_change("")
 			Game.main.pause_finish()
 			Game.main.load_save()
 		3:

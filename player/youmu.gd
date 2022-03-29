@@ -8,7 +8,7 @@ export (int) var SNAP_LEN = 30
 
 export (float) var JUMP_FORCE = -500
 export (float) var DASH_FORCE = 1200
-export (float) var ATTACK_DISPLACE = 900
+export (float) var ATTACK_DISPLACE = 800
 export (float) var DASH_DURATION = 0.15
 export (float) var DASH_DECAY = 0.2
 export (float) var DASH_GAP = 1
@@ -124,6 +124,7 @@ func hurt(area, damage):
 	velo = hurt_dir.normalized() * 200
 	velo = move_and_slide(velo, Vector2.UP)
 	if Gamestate.state.health == 0:
+		$biu.play()
 		fsm.state_next = fsm.states.dead
 	else:
 		fsm.state_next = fsm.states.hurt
@@ -167,6 +168,7 @@ func _on_hitbox3_area_entered(area):
 
 # when succesfully attack, hit backwards
 func _on_attack_success():
+	# Game.camera.shake(2, 0.3)
 	velo.x = ATTACK_DISPLACE * -dir_cur * 0.1
 	velo = move_and_slide_with_snap( velo, Vector2(0,10), Vector2.UP )
 

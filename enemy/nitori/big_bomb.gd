@@ -17,7 +17,7 @@ onready var timer = $Timer
 var is_bounced
 var has_exploded
 var velo
-
+var child_num
 
 func _ready():
 	timer.start(0.5)
@@ -25,8 +25,9 @@ func _ready():
 	is_bounced = false
 	has_exploded = false
 
-func initialize(dir: Vector2):
+func initialize(dir: Vector2, c_num = 3):
 	velo = dir * THROW_FORCE
+	child_num = c_num
 	velo.y -= 100
 
 func _physics_process(delta):
@@ -41,12 +42,14 @@ func explode():
 	sprite.hide()
 	explosion_sp.show()
 	anim.play("explode")
+	$explode.play()
 
-	for i in range(3):
+	for i in range(child_num):
 		var projectile = projectile_path.instance()
 	
 		projectile.global_position = global_position
-		projectile.initialize(dir.rotated(deg2rad(30 - i*30)).normalized())
+		var ang = 60 / (child_num -1)
+		projectile.initialize(dir.rotated(deg2rad(ang - i*ang)).normalized())
 		get_parent().add_child(projectile)
 		projectile.set_physics_process(true)
 
