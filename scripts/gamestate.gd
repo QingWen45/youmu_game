@@ -70,7 +70,7 @@ func state_initialize():
 		"current_dir": 1,
 		"bullet_damage": 60,
 		"bullet_live_time": 0.5,
-		"health": 100,
+		"health": 2000,
 		"max_health": 100,
 		"items": [],
 		"events": debug_events

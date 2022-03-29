@@ -2,6 +2,7 @@ extends FSM_state
 
 
 func initialize():
+	obj.velo = Vector2.ZERO
 	obj.anim_next = "idle"
 
 
