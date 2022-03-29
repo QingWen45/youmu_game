@@ -17,7 +17,7 @@ func _ready():
 		Game.hud.initialize()
 		Game.item_menu.load_item()
 		Game.item_menu.item_effect()
-		$margin/hbox/selections/continue.selectable = true
+		$margin/hbox/selections/Continue.selectable = true
 		update_menu()
 	
 

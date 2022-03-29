@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/explosion_04.wav-9ec9e96cbfb8762fdc3b947b502676f2.sample"
+
+[deps]
+
+source_file="res://assets/audio/nitori/explosion_04.wav"
+dest_files=[ "res://.import/explosion_04.wav-9ec9e96cbfb8762fdc3b947b502676f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

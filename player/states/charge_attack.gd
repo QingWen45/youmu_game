@@ -8,7 +8,6 @@ onready var timer = $Timer
 func initialize():
 	attack_timer = 0.6
 	obj.anim_next = "charge_attack"
-
 	obj.is_invulnerable = true
 	obj.invulnerable_timer = 0.6
 	timer.start()
@@ -18,6 +17,7 @@ func run(delta):
 		attack_timer -= delta
 	else:
 		fsm.state_next = fsm.states.idle
+		
 
 	obj.velo.x = lerp(obj.velo.x, 0, obj.DASH_DECAY)	
 	obj.velo.y = 0

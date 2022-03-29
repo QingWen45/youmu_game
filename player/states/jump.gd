@@ -41,7 +41,7 @@ func run(delta):
 		if obj.velo.y > 0:
 			fsm.state_next = fsm.states.fall
 
-	if Input.is_action_just_pressed("jump"): # and Gamestate.state.can_double_jump:
+	if Input.is_action_just_pressed("jump") and Gamestate.state.can_double_jump:
 		fsm.state_next = fsm.states.double_jump
 		return
 

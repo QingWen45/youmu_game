@@ -76,10 +76,10 @@ custom_styles/separator = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="hud/margin/bars/left_hud/hbox"]
 margin_left = 8.0
-margin_right = 63.0
+margin_right = 62.0
 margin_bottom = 9.0
 custom_fonts/font = ExtResource( 7 )
-text = "You are good"
+text = "Youmu is you"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,11 +119,11 @@ margin_bottom = 26.0
 alignment = 2
 
 [node name="Label" type="Label" parent="hud/margin/bars/right_hud/hbox"]
-margin_left = 161.0
+margin_left = 174.0
 margin_right = 216.0
 margin_bottom = 9.0
 custom_fonts/font = ExtResource( 7 )
-text = "You are good"
+text = "boss name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -143,7 +143,7 @@ __meta__ = {
 }
 
 [node name="vbox" type="VBoxContainer" parent="hud/margin/side_msg"]
-margin_left = 398.0
+margin_left = 412.0
 margin_right = 432.0
 margin_bottom = 240.0
 alignment = 2
@@ -152,9 +152,13 @@ alignment = 2
 
 [node name="Label" type="Label" parent="hud/margin/side_msg/vbox"]
 margin_top = 231.0
-margin_right = 34.0
+margin_right = 20.0
 margin_bottom = 240.0
 custom_fonts/font = ExtResource( 7 )
-text = "message"
+text = "good"
 
 [node name="Timer" type="Timer" parent="hud/margin/side_msg/vbox"]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Tween2" type="Tween" parent="."]

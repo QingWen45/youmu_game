@@ -56,6 +56,7 @@ test version""".format({"h": Gamestate.state.health,
 	debug_lb.text = msg
 
 func initialize():
+	side_msg_lb.text = ""
 	health_bar.value = Gamestate.state.max_health
 	damage_bar.value = Gamestate.state.max_health
 	health_bar.max_value = Gamestate.state.max_health
@@ -85,16 +86,19 @@ func on_health_change():
 func get_boss_ready():
 	boss_lb.text = Game.cur_boss.boss_name
 	boss_max_health = Game.cur_boss.MAX_HEALTH
+	boss_bar.value = 0
+	boss_bar.max_value = boss_max_health
 	tween2.interpolate_property(boss_hud, "modulate:a", 0, 1.0, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween2.start()
 	yield(tween2, "tween_all_completed")
-	tween2.interpolate_property(boss_bar, "value", 0, boss_max_health, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween2.interpolate_property(boss_bar, "value", 0, boss_max_health, 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween2.start()
 
 func on_boss_health_change():
 	var health = Game.cur_boss.health
 	if health < 0:
 		health = 0
+	# print("health: ", health)
 	boss_bar.value = health
 
 func on_boss_clear():

@@ -18,6 +18,8 @@ func run( delta ):
 	if obj.is_on_floor():
 		obj.velo.x = lerp(obj.velo.x, 0, obj.AIR_ACCEL)
 
+	obj.velo = obj.move_and_slide(obj.velo, Vector2.UP)
+
 	if obj.is_on_floor() and not anim_played:
 		anim_played = true
 		obj.anim_next = "death"

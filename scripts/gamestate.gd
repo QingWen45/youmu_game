@@ -54,7 +54,7 @@ func clear_boss():
 
 
 func _ready():
-	# state_initialize()
+	state_initialize()
 	self.pause_mode = PAUSE_MODE_PROCESS
 
 
@@ -65,7 +65,7 @@ func state_initialize():
 	state = {
 		"can_double_jump": false, 
 		"can_graze": false,
-		"current_level": "",
+		"current_level": "res://zone/test_zones/test_zone.tscn",
 		"current_pos": "initial_position",
 		"current_dir": 1,
 		"bullet_damage": 60,

@@ -81,6 +81,8 @@ func item_effect():
 		items[i].effect()
 
 func _initialize():
+	if items.empty():
+		return
 	for i in items:
 		i.deselect()
 	items[0].select()

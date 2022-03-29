@@ -9,7 +9,8 @@ func initialize():
 	key_down_timer = 0.2
 	if fsm.state_last != fsm.states.air_attack:
 		obj.has_double_jumped = true
-		obj.velo.y = obj.JUMP_FORCE
+		obj.velo.y = obj.JUMP_FORCE * 0.8
+		obj.jump_sound.play()
 		obj.jump_dust_generate(16)
 
 

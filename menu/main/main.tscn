@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://menu/pause_menu/pause_layer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://menu/main/main.gd" type="Script" id=2]
+[ext_resource path="res://hud/hud_layer/hud_layer.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -41,11 +42,13 @@ script = ExtResource( 2 )
 [node name="level" type="Node2D" parent="."]
 
 [node name="pause_layer" parent="." instance=ExtResource( 1 )]
+pause_mode = 2
+
+[node name="hud_layer" parent="." instance=ExtResource( 3 )]
 
 [node name="load_layer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="load_layer"]
-visible = false
 margin_right = 480.0
 margin_bottom = 280.0
 color = Color( 0, 0, 0, 1 )
@@ -69,9 +72,14 @@ __meta__ = {
 }
 
 [node name="scrn_timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="save_timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+
+[connection signal="timeout" from="scrn_timer" to="." method="_on_scrn_timer_timeout"]
+[connection signal="timeout" from="save_timer" to="." method="_on_save_timer_timeout"]

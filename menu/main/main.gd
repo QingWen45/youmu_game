@@ -2,7 +2,7 @@ extends Node2D
 
 const START_MENU = "res://menu/start_menu/start_menu.tscn"
 
-onready var load_anim = $load_layer/load_anim
+onready var load_anim = $load_layer/anim
 onready var hud = $hud_layer/hud
 onready var pause = $pause_layer/pause_menu
 onready var black_layer = $black_layer/ColorRect

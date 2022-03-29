@@ -42,14 +42,14 @@ func run(delta):
 			return
 		# fall and then double jump
 		elif fsm.state_last != fsm.states.jump and not obj.has_double_jumped:
-			if true: #Gamestate.state.can_double_jump:
+			if Gamestate.state.can_double_jump:
 				fsm.state_next = fsm.states.double_jump
 				return
 		# regular double jump
 		elif fsm.state_last == fsm.states.jump and not obj.has_double_jumped:
-			# if Gamestate.state.can_double_jump:
-			fsm.state_next = fsm.states.double_jump
-			return 
+			if Gamestate.state.can_double_jump:
+				fsm.state_next = fsm.states.double_jump
+				return 
 
 	if obj.is_on_floor():
 		obj.has_double_jumped = false
